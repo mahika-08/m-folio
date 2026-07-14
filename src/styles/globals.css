@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary:#3B82F6;
+    --color-accent:#2563EB;
+    --color-surface:#0D1117;
+    --color-card:#161B22;
+    --color-raised:#1C2128;
+    --color-border:#30363D;
+    --color-text:#F0F6FC;
+    --color-muted:#8B949E;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body{
+    background:#0D1117;
+    color:#F0F6FC;
+}
+
+  ::selection {
+    @apply bg-primary/30 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-primary/60; }
+
+  /* Focus ring */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-28 px-4;
+  }
+
+  .container-max {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .card-glass {
+    @apply bg-surface-card border border-surface-border rounded-2xl;
+    backdrop-filter: blur(12px);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  .section-label {
+    @apply font-mono text-sm tracking-widest text-primary/80 uppercase mb-3;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium
+           bg-gradient-primary text-white transition-all duration-200
+           hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]
+           focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium
+           border border-surface-border text-slate-300 transition-all duration-200
+           hover:border-primary/50 hover:text-white hover:bg-primary/5
+           active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-primary
+           focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+  }
+
+  .tag-pill {
+    @apply px-3 py-1 text-xs font-mono rounded-full
+           bg-primary/10 text-primary border border-primary/20;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 { animation-delay: 2s; }
+  .animation-delay-4000 { animation-delay: 4s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
